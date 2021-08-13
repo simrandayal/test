@@ -18,6 +18,20 @@ pipeline{
 		stage("test"){
 			steps{
 				echo ' testing the app'
+				script{
+					try{
+						sh("""#!/bin/bash -l
+						set +x
+						. \$HOME/vnev/bin/activate
+						cd \$WORKSPACE/app
+						
+						python test.py
+						""")
+					
+					}	
+					
+					
+				}
 			}
 		}	
 
